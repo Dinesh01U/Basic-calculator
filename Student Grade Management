@@ -1,0 +1,32 @@
+#include <stdio.h>
+char get_grade_category(float grade) {
+    if (grade >= 90) {
+        return 'A';
+    } else if (grade >= 80) {
+        return 'B';
+    } else if (grade >= 70) {
+        return 'C';
+    } else if (grade >= 60) {
+        return 'D';
+    } else {
+        return 'F';
+    }
+}
+
+int main() {
+    const int number_of_students = 3; 
+    char names[number_of_students][50];
+    float grades[number_of_students];
+    for (int i = 0; i < number_of_students; i++) {
+        printf("Enter name of student %d: ", i + 1);
+        scanf(" %[^\n]s", names[i]);  
+        printf("Enter grade for %s: ", names[i]);
+        scanf("%f", &grades[i]);
+    }
+    printf("\n--- Student Grades and Categories ---\n");
+    for (int i = 0; i < number_of_students; i++) {
+        char grade_category = get_grade_category(grades[i]);
+        printf("%s: %.2f - Grade: %c\n", names[i], grades[i], grade_category);
+    }
+    return 0;
+}
